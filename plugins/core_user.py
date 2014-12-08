@@ -79,7 +79,6 @@ def greeting(inp, nick=None, conn=None, chan=None,db=None, notice=None):
         return
     except: return "Uwaaahh~~?"
 
-
 ### Waifu & Husbando
 @hook.command(autohelp=False)
 def waifu(inp, nick=None, conn=None, chan=None,db=None, notice=None):
@@ -100,7 +99,9 @@ def waifu(inp, nick=None, conn=None, chan=None,db=None, notice=None):
         database.set(db,'users','waifu','{} '.format(inp.strip().encode('utf8')),'nick',nick)
         notice("Saved your waifu.")
     return
+
 ### Daughteru 
+@hook.command(autohelp=False)
 def daughteru(inp, nick=None, conn=None, chan=None,db=None, notice=None):
     "daughteru <waifu | @ person> -- Shows a users daughteru."
 
@@ -119,7 +120,6 @@ def daughteru(inp, nick=None, conn=None, chan=None,db=None, notice=None):
         database.set(db,'users','daughteru','{} '.format(inp.strip().encode('utf8')),'nick',nick)
         notice("Saved your daughteru.")
     return
-
 
 @hook.command(autohelp=False)
 def husbando(inp, nick=None, conn=None, chan=None,db=None, notice=None):
@@ -160,7 +160,6 @@ def imouto(inp, nick=None, conn=None, chan=None,db=None, notice=None):
         database.set(db,'users','imouto','{} '.format(inp.strip().encode('utf8')),'nick',nick)
         notice("Saved your imouto.")
     return
-
 
 ### Desktops
 @hook.command(autohelp=False)
@@ -214,7 +213,6 @@ def horoscope(inp, db=None, notice=None, nick=None):
     if sign and save: database.set(db,'users','horoscope',sign,'nick',nick)
     
     return u"\x02{}\x02 {}".format(title, horoscopetxt)
-
 
 @hook.command(autohelp=False)
 def homescreen(inp, nick=None, conn=None, chan=None,db=None, notice=None):
