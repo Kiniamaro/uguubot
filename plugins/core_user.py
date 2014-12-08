@@ -100,6 +100,25 @@ def waifu(inp, nick=None, conn=None, chan=None,db=None, notice=None):
         database.set(db,'users','waifu','{} '.format(inp.strip().encode('utf8')),'nick',nick)
         notice("Saved your waifu.")
     return
+### Daughteru 
+def daughteru(inp, nick=None, conn=None, chan=None,db=None, notice=None):
+    "daughteru <waifu | @ person> -- Shows a users daughteru."
+
+    if not inp or '@' in inp:
+        if '@' in inp: nick = inp.split('@')[1].strip()
+        result = database.get(db,'users','daughteru','nick',nick)
+        if result: 
+            return '{}: {}'.format(nick,result)
+        else: 
+            if not '@' in inp: notice(waifu.__doc__)
+            return 'No daughteru saved for {}.'.format(nick)
+    elif 'del' in inp:
+        database.set(db,'users','daughteru','','nick',nick)
+        notice("Deleted your daughteru.")
+    else:
+        database.set(db,'users','daughteru','{} '.format(inp.strip().encode('utf8')),'nick',nick)
+        notice("Saved your daughteru.")
+    return
 
 
 @hook.command(autohelp=False)
